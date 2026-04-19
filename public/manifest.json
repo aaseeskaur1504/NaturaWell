@@ -1,0 +1,21 @@
+{
+  "name": "NaturaWell",
+  "short_name": "NaturaWell",
+  "description": "Natural Wellness & Holistic Health Tracker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F9F7",
+  "theme_color": "#7B8E7E",
+  "icons": [
+    {
+      "src": "https://picsum.photos/seed/nature/192/192",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://picsum.photos/seed/nature/512/512",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

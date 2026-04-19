@@ -1,0 +1,6 @@
+{
+  "name": "NaturaWell",
+  "description": "A holistic health and wellness app offering natural home remedies for skin and hair, mood and progress tracking with visual reports, and daily reminders for a healthier lifestyle.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["AI Remedy Generation", "Progress Tracking", "Water & Step Counting"]
+}

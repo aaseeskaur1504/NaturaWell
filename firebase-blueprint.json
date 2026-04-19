@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user skin/hair types and health preferences.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "skinType": { "type": "string", "enum": ["Oily", "Dry", "Combination", "Normal", "Sensitive", "Unknown"] },
+        "hairType": { "type": "string", "enum": ["Straight", "Wavy", "Curly", "Coily", "Unknown"] },
+        "concerns": { "type": "array", "items": { "type": "string" } },
+        "stepGoal": { "type": "number" },
+        "waterGoal": { "type": "number" },
+        "age": { "type": "number" },
+        "height": { "type": "number" },
+        "weight": { "type": "number" }
+      },
+      "required": ["userId"]
+    },
+    "ProgressEntry": {
+      "title": "Progress Entry",
+      "description": "Visual and text log for tracking skin/hair healing.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "imageUrl": { "type": "string" },
+        "note": { "type": "string" },
+        "area": { "type": "string" }
+      },
+      "required": ["userId", "date"]
+    },
+    "DailyLog": {
+      "title": "Daily Health Log",
+      "description": "Daily metrics for water, steps, and exercises.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "steps": { "type": "number" },
+        "water": { "type": "number" },
+        "exercises": { "type": "boolean" },
+        "yoga": { "type": "boolean" },
+        "meditation": { "type": "boolean" }
+      },
+      "required": ["userId", "date"]
+    },
+    "Reminder": {
+      "title": "Reminder",
+      "description": "Scheduled notifications for medicines and remedies.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "time": { "type": "string" },
+        "type": { "type": "string", "enum": ["medicine", "remedy", "water"] },
+        "enabled": { "type": "boolean" }
+      },
+      "required": ["userId", "title", "time"]
+    },
+    "RoadmapProgress": {
+      "title": "Roadmap Progress",
+      "description": "Completion status for roadmap items.",
+      "type": "object",
+      "properties": {
+        "completed": { "type": "object" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Root user profile data."
+    },
+    "/users/{userId}/progress/{entryId}": {
+      "schema": "ProgressEntry",
+      "description": "Evolution trackers for the user."
+    },
+    "/users/{userId}/logs/{logId}": {
+      "schema": "DailyLog",
+      "description": "Daily activity logs."
+    },
+    "/users/{userId}/reminders/{reminderId}": {
+      "schema": "Reminder",
+      "description": "User scheduled reminders."
+    },
+    "/users/{userId}/roadmap/progress": {
+      "schema": "RoadmapProgress",
+      "description": "Roadmap item completion data."
+    }
+  }
+}
